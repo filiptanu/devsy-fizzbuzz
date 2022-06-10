@@ -4,18 +4,19 @@ This repository contains implementation of the specification defined in [Java Te
 
 ## Requirements
 
-TBD
+- Docker
+- Docker Compose V1
 
 ## Running the API
 
 To run the API:
 
 ```
-./mvnw spring-boot:run
+docker-compose run --service-ports api
 ```
 
 To run the tests:
 
 ```
-./mvnw test
+docker-compose run test
 ```
