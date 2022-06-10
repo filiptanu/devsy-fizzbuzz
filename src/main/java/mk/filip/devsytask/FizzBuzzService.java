@@ -16,4 +16,14 @@ public class FizzBuzzService {
         return String.valueOf(entry);
     }
 
+    public FizzBuzzListResponse generateFirst100() {
+        FizzBuzzListResponse fizzBuzzListResponse = new FizzBuzzListResponse();
+
+        for (int i = 1; i <= 100; i++) {
+            fizzBuzzListResponse.addFizzBuzzResponse(new FizzBuzzSingleResponse(String.valueOf(i), fizzBuzz(i)));
+        }
+
+        return fizzBuzzListResponse;
+    }
+
 }

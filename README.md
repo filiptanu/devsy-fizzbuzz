@@ -8,6 +8,12 @@ TBD
 
 ## Running the API
 
+To run the API:
+
+```
+./mvnw spring-boot:run
+```
+
 To run the tests:
 
 ```
