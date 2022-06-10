@@ -12,8 +12,16 @@ public class FizzBuzzService {
     public FizzBuzzSingleResponse fizzBuzz(int entry) {
         String stringEntry = String.valueOf(entry);
 
-        if (entry % 3 == 0 && entry % 5 == 0) {
+        if (entry % 3 == 0 && entry % 5 == 0 && entry % 7 == 0) {
+            return new FizzBuzzSingleResponse(stringEntry, "FizzBuzzBazz");
+        } else if (entry % 5 == 0 && entry % 7 == 0) {
+            return new FizzBuzzSingleResponse(stringEntry, "BuzzBazz");
+        } else if (entry % 3 == 0 && entry % 7 == 0) {
+            return new FizzBuzzSingleResponse(stringEntry, "FizzBazz");
+        } else if (entry % 3 == 0 && entry % 5 == 0) {
             return new FizzBuzzSingleResponse(stringEntry, "fizzbuzz");
+        } else if (entry % 7 == 0) {
+            return new FizzBuzzSingleResponse(stringEntry, "Bazz");
         } else if (entry % 5 == 0) {
             return new FizzBuzzSingleResponse(stringEntry, "buzz");
         } else if (entry % 3 == 0) {

@@ -15,9 +15,33 @@ class FizzBuzzServiceTests {
     private FizzBuzzService fizzBuzzService;
 
     @Test
+    public void given105_whenFizzBuzzInvoked_thenFizzBuzzBazz() {
+        FizzBuzzSingleResponse expectedFizzBuzzSingleResponse = new FizzBuzzSingleResponse("105", "FizzBuzzBazz");
+        assertEquals(expectedFizzBuzzSingleResponse, fizzBuzzService.fizzBuzz(105));
+    }
+
+    @Test
+    public void given35_whenFizzBuzzInvoked_thenBuzzBazz() {
+        FizzBuzzSingleResponse expectedFizzBuzzSingleResponse = new FizzBuzzSingleResponse("35", "BuzzBazz");
+        assertEquals(expectedFizzBuzzSingleResponse, fizzBuzzService.fizzBuzz(35));
+    }
+
+    @Test
+    public void given21_whenFizzBuzzInvoked_thenFizzBazz() {
+        FizzBuzzSingleResponse expectedFizzBuzzSingleResponse = new FizzBuzzSingleResponse("21", "FizzBazz");
+        assertEquals(expectedFizzBuzzSingleResponse, fizzBuzzService.fizzBuzz(21));
+    }
+
+    @Test
     public void given15_whenFizzBuzzInvoked_thenFizzBuzz() {
         FizzBuzzSingleResponse expectedFizzBuzzSingleResponse = new FizzBuzzSingleResponse("15", "fizzbuzz");
         assertEquals(expectedFizzBuzzSingleResponse, fizzBuzzService.fizzBuzz(15));
+    }
+
+    @Test
+    public void given7_whenFizzBuzzInvoked_thenBazz() {
+        FizzBuzzSingleResponse expectedFizzBuzzSingleResponse = new FizzBuzzSingleResponse("7", "Bazz");
+        assertEquals(expectedFizzBuzzSingleResponse, fizzBuzzService.fizzBuzz(7));
     }
 
     @Test
