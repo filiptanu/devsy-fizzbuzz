@@ -26,4 +26,14 @@ public class FizzBuzzSingleResponse extends FizzBuzzResponse {
         this.output = output;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof FizzBuzzSingleResponse) {
+            FizzBuzzSingleResponse instance = (FizzBuzzSingleResponse) obj;
+
+            return this.entry.equals(instance.entry) && this.output.equals(instance.output);
+        }
+
+        return false;
+    }
 }

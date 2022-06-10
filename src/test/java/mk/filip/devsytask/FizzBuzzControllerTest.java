@@ -26,7 +26,7 @@ class FizzBuzzControllerTest {
     private ObjectMapper objectMapper;
 
     @Test
-    public void given15_whenInvoked_thenFizzBuzz() throws Exception {
+    public void given15_whenFizzBuzzEndpointInvoked_thenFizzBuzz() throws Exception {
         FizzBuzzSingleResponse fizzBuzzSingleResponse = new FizzBuzzSingleResponse("15", "fizzbuzz");
         final String expectedFizzBuzzContent = objectMapper.writeValueAsString(fizzBuzzSingleResponse);
 
@@ -34,7 +34,7 @@ class FizzBuzzControllerTest {
     }
 
     @Test
-    public void given5_whenInvoked_thenBuzz() throws Exception {
+    public void given5_whenFizzBuzzEndpointInvoked_thenBuzz() throws Exception {
         FizzBuzzSingleResponse fizzBuzzSingleResponse = new FizzBuzzSingleResponse("5", "buzz");
         final String expectedFizzBuzzContent = objectMapper.writeValueAsString(fizzBuzzSingleResponse);
 
@@ -42,7 +42,7 @@ class FizzBuzzControllerTest {
     }
 
     @Test
-    public void given3_whenInvoked_thenFizz() throws Exception {
+    public void given3_whenFizzBuzzEndpointInvoked_thenFizz() throws Exception {
         FizzBuzzSingleResponse fizzBuzzSingleResponse = new FizzBuzzSingleResponse("3", "fizz");
         final String expectedFizzBuzzContent = objectMapper.writeValueAsString(fizzBuzzSingleResponse);
 
@@ -50,7 +50,7 @@ class FizzBuzzControllerTest {
     }
 
     @Test
-    public void givenNon3Nor5_whenInvoked_thenEntry() throws Exception {
+    public void givenNon3Nor5_whenFizzBuzzEndpointInvoked_thenEntry() throws Exception {
         FizzBuzzSingleResponse fizzBuzzSingleResponse = new FizzBuzzSingleResponse("1", "1");
         final String expectedFizzBuzzContent = objectMapper.writeValueAsString(fizzBuzzSingleResponse);
 
@@ -58,18 +58,23 @@ class FizzBuzzControllerTest {
     }
 
     @Test
-    public void givenParamWithoutValue_whenInvoked_thenGenerateFirst100() throws Exception {
+    public void givenParamWithoutValue_whenFizzBuzzEndpointInvoked_thenGenerateFirst100() throws Exception {
         this.mockMvc.perform(get("/fizzbuzz?entry=")).andExpect(status().isOk()).andExpect(jsonPath("$.output", hasSize(100)));
     }
 
     @Test
-    public void givenMissingParam_whenInvoked_thenGenerateFirst100() throws Exception {
+    public void givenMissingParam_whenFizzBuzzEndpointInvoked_thenGenerateFirst100() throws Exception {
         this.mockMvc.perform(get("/fizzbuzz")).andExpect(status().isOk()).andExpect(jsonPath("$.output", hasSize(100)));
     }
 
     @Test
-    public void givenBadNumberFormat_whenInvoked_thenFizzBuzzError() throws Exception {
+    public void givenBadNumberFormat_whenFizzBuzzEndpointInvoked_thenFizzBuzzError() throws Exception {
         this.mockMvc.perform(get("/fizzbuzz?entry=abc")).andExpect(status().isBadRequest()).andExpect(jsonPath("$.message", is("Number format error")));
+    }
+
+    @Test
+    public void givenListOfIntegers_whenFizzBuzzManyEndpointInvoked_thenFizzBuzzFirstN() throws Exception {
+        this.mockMvc.perform(get("/manyfizzbuzz?entries=1,2,3,4,5")).andExpect(status().isOk()).andExpect(jsonPath("$.output", hasSize(5)));
     }
 
 }

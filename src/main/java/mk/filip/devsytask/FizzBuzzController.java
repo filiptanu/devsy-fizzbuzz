@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class FizzBuzzController {
 
@@ -12,8 +14,13 @@ public class FizzBuzzController {
     private FizzBuzzService fizzBuzzService;
 
     @GetMapping("/fizzbuzz")
-    public FizzBuzzResponse fizzBuzzResponse(@RequestParam(name="entry") int entry) {
-            return new FizzBuzzSingleResponse(String.valueOf(entry), fizzBuzzService.fizzBuzz(entry));
+    public FizzBuzzResponse fizzBuzz(@RequestParam(name="entry") int entry) {
+        return fizzBuzzService.fizzBuzz(entry);
+    }
+
+    @GetMapping("/manyfizzbuzz")
+    public FizzBuzzResponse manyFizzBuzz(@RequestParam(name="entries") List<Integer> entries) {
+        return fizzBuzzService.fizzBuzzMany(entries);
     }
 
 }
